@@ -32,4 +32,38 @@ function M.tables_array(...)
   return { ... }
 end
 
+local function is_array(t, _cache)
+  local count = #t
+  if count == 0 then
+    return false
+  end
+
+  for i = 1, count do
+    local v = t[i]
+    if v == nil then
+      return false
+    end
+    t[i] = nil
+    _cache[i] = v
+  end
+
+  if next(t) then
+    return false
+  end
+
+  for i = 1, count do
+    t[i] = _cache[i]
+    _cache[i] = nil
+  end
+
+  return true
+end
+
+--Check if table is an array
+--@param t table
+function M.is_array(tab)
+  local _cache = {}
+  return is_array(tab, _cache)
+end
+
 return M
