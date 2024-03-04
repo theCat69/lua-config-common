@@ -26,4 +26,10 @@ function M.table_merge(...)
   return origin_table
 end
 
+---Merge all tables into an array.
+---@param ... table[]
+function M.tables_array(...)
+  return { ... }
+end
+
 return M
