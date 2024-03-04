@@ -1,3 +1,5 @@
+---@meta
+
 ---@class TableUtils
 local M = {}
 
@@ -18,6 +20,7 @@ end
 
 ---Merge all tables into a new one. The last one overrinding keys from the precendent.
 ---@param ... table[]
+---@return table
 function M.table_merge(...)
   local origin_table = {}
   for _, tab in ipairs({ ... }) do
@@ -28,6 +31,7 @@ end
 
 ---Merge all tables into an array.
 ---@param ... table[]
+---@return table[]
 function M.tables_array(...)
   return { ... }
 end
@@ -59,8 +63,9 @@ local function is_array(t, _cache)
   return true
 end
 
---Check if table is an array
---@param t table
+---Check if table is an array
+---@param tab table
+---@return boolean
 function M.is_array(tab)
   local _cache = {}
   return is_array(tab, _cache)
