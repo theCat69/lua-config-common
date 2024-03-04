@@ -16,13 +16,14 @@ local function table_merge(t1, t2)
   return t1
 end
 
----Merge all tables into the first one. The last one overrinding keys from the precendent.
----@param original_table table
+---Merge all tables into a new one. The last one overrinding keys from the precendent.
 ---@param ... table[]
-function M:table_merge(original_table, ...)
+function M.table_merge(...)
+  local origin_table = {}
   for _, tab in ipairs({ ... }) do
-    table_merge(original_table, tab)
+    table_merge(origin_table, tab)
   end
+  return origin_table
 end
 
 return M
