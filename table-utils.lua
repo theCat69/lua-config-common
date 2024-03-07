@@ -71,4 +71,22 @@ function M.is_array(tab)
   return is_array(tab, _cache)
 end
 
+function tableHasValue(table, value)
+  for _, v in ipairs(table) do
+    if v == value then
+      return true
+    end
+  end
+  return false
+end
+
+function M.filter_array(array, filter)
+  local new_table = {}
+  for _, value in pairs(array) do
+    if not tableHasValue(filter, value) then
+      table.insert(new_table, value)
+    end
+  end
+end
+
 return M
