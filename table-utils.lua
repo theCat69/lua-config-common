@@ -87,6 +87,7 @@ function M.filter_array(array, filter)
       table.insert(new_table, value)
     end
   end
+  return new_table
 end
 
 return M
